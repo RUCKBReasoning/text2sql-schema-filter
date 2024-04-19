@@ -48,14 +48,13 @@ Here is an example of how your data should be formatted:
                 "column_names": ["mid", "title", "year", "director"],
                 "column_comments": ["movie id", "", "", ""]
             },
-            // Additional schema items...
+            ...
         ]
     }
 }
 ```
 
-This JSON structure allows the schema filter to understand and process the relationship between natural language questions and their SQL counterparts within the context of the given database schema.
-This schema filter is a powerful addition to any text-to-SQL project, streamlining the process of linking natural language queries to the correct database schemas.
+In the provided example scripts, you can adjust the `num_top_k_tables` and `num_top_k_columns` parameters. These define the number of tables and columns, respectively, that will be retained after schema filtering.
 
 ## Citation
 If this project assists you, kindly reference the following paper:
