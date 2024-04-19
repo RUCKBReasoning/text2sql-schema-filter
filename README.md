@@ -13,7 +13,7 @@ The schema filter's architecture follows the cross-encoder design from [RESDSQL]
 
 ## Training Data
 
-We fine-tuned this schema filter using datasets from Spider, BIRD, and CSpider, ensuring a robust and versatile schema filter capable of handling diverse queries.
+We fine-tuned this schema filter using training sets from Spider, BIRD, and CSpider, ensuring a robust and versatile schema filter capable of handling diverse queries.
 
 ## Hardware Requirements
 
@@ -24,6 +24,37 @@ The schema filter's extensive parameter count (3.5 billion) necessitates at leas
 1. **Model Download**: Acquire our fine-tuned model [here](https://pan.quark.cn/s/105f37342be1) and unzip it.
 2. **Usage Examples**: Consult `eval_mode.py` for running the model without SQL input, predicting relevance scores for tables and columns based on queries using the trained model. Use `training_mode.py` for a guided experience with ground-truth SQL, simulating the schema filtering process.
 
+To integrate the schema filter into your text-to-SQL system properly, your data needs to be organized as follows:
+
+- `text`: The natural language question.
+- `sql`: The corresponding SQL query; this can be left as an empty string when in evaluation mode.
+- `schema`: The structure detailing the database schema.
+- `schema.schema_items.table_name`: The name of the table in the database.
+- `schema.schema_items.table_comment`: A descriptive comment for the table, which is necessary if the table name is not self-explanatory. Otherwise, this can be left as an empty string.
+- `schema.schema_items.column_names`: The names of the columns in the table.
+- `schema.schema_items.column_comments`: A descriptive comment for each column, is required only if the column name could be confusing. If clarity is not an issue, this can also be an empty string.
+
+Here is an example of how your data should be formatted:
+
+```json
+{
+    "text": "List the names of directors whose films have received reviews from Sarah Martinez.",
+    "sql": "SELECT DISTINCT movie.director FROM rating JOIN movie ON rating.mid = movie.mid JOIN reviewer ON rating.rid = reviewer.rid WHERE reviewer.name = 'Sarah Martinez'",
+    "schema": {
+        "schema_items": [
+            {
+                "table_name": "movie",
+                "table_comment": "",
+                "column_names": ["mid", "title", "year", "director"],
+                "column_comments": ["movie id", "", "", ""]
+            },
+            // Additional schema items...
+        ]
+    }
+}
+```
+
+This JSON structure allows the schema filter to understand and process the relationship between natural language questions and their SQL counterparts within the context of the given database schema.
 This schema filter is a powerful addition to any text-to-SQL project, streamlining the process of linking natural language queries to the correct database schemas.
 
 ## Citation
