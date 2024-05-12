@@ -21,7 +21,7 @@ The schema filter's extensive parameter count (3.5 billion) necessitates at leas
 
 ## Getting Started
 
-1. **Model Download**: Acquire our fine-tuned model [here](https://pan.quark.cn/s/105f37342be1) and unzip it.
+1. **Model Download**: Acquire our fine-tuned model from [quark netdisk](https://pan.quark.cn/s/105f37342be1) or [google drive](https://drive.google.com/file/d/1yzNoMqtQ8WD-ARsWqdytvfnIduEL9Uda/view?usp=sharing) and then unzip it.
 2. **Usage Examples**: Consult `eval_mode.py` for running the model without SQL input, predicting relevance scores for tables and columns based on queries using the trained model. Use `training_mode.py` for a guided experience with ground-truth SQL, simulating the schema filtering process.
 
 To integrate the schema filter into your text-to-SQL system properly, your data needs to be organized as follows:
