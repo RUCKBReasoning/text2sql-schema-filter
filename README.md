@@ -22,7 +22,7 @@ The schema filter's extensive parameter count (3.5 billion) necessitates at leas
 ## Getting Started
 
 1. **Clone Project**: Clone or download this project.
-2. **Model Download**: Acquire our fine-tuned model `sic_merged.zip` from [quark netdisk](https://pan.quark.cn/s/105f37342be1) or [google drive](https://drive.google.com/file/d/1xzNvv5h-ZjhjOOZ-ePv1xg_n3YbUNLWi/view?usp=sharing) and then unzip it in the root of this project.
+2. **Model Download**: Acquire our fine-tuned model `sic_merged.zip` from [quark netdisk](https://pan.quark.cn/s/418c417127ae) or [google drive](https://drive.google.com/file/d/1xzNvv5h-ZjhjOOZ-ePv1xg_n3YbUNLWi/view?usp=sharing) and then unzip it in the root of this project.
 3. **Usage Examples**: Consult `eval_mode.py` for running the model without SQL input, predicting relevance scores for tables and columns based on queries using the trained model. Use `training_mode.py` for a guided experience with ground-truth SQL, simulating the schema filtering process.
 
 To integrate the schema filter into your text-to-SQL system properly, your data needs to be organized as follows:
